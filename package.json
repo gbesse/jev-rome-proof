@@ -1,6 +1,6 @@
 {
   "name": "@gbesse/jev-rome-proof",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Relie des preuves concrètes de candidature ou de formation aux compétences ROME 4.0 de France Travail.",
   "type": "module",
   "license": "MIT",

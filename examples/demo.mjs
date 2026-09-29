@@ -1,2 +1,38 @@
 // Objectif : démontrer la frontière de décision sans appel réseau.
-import{assessEvidence}from"../src/index.mjs";import{createFakeProvider}from"../src/jev.mjs";const p=createFakeProvider(()=>({model:"jev-1.13.0",answers:{coverage:{type:"choice",choice:"demonstrated",probabilities:{demonstrated:.84,partially_demonstrated:.1,adjacent:.04,no_evidence:.02},confidence:.84}},usage:{}}));console.log(JSON.stringify(await assessEvidence({code:"SK-001",label:"Conduire un entretien utilisateur",description:"Préparer, conduire et synthétiser un entretien.",sourceUrl:"https://francetravail.io"},{id:"ev-1",kind:"portfolio",text:"Planifié 12 entretiens, rédigé le guide et produit la synthèse utilisée par l'équipe produit.",observedAt:"2026-06-01"},p),null,2));
+import assert from "node:assert/strict";
+import { assessEvidence } from "../src/index.mjs";
+import { createFakeProvider } from "../src/jev.mjs";
+const p = createFakeProvider(() => ({
+  model: "jev-1.13.0",
+  answers: {
+    coverage: {
+      type: "choice",
+      choice: "demonstrated",
+      probabilities: {
+        demonstrated: 0.84,
+        partially_demonstrated: 0.1,
+        adjacent: 0.04,
+        no_evidence: 0.02,
+      },
+      confidence: 0.84,
+    },
+  },
+  usage: {},
+}));
+const resultat = await assessEvidence(
+  {
+    code: "SK-001",
+    label: "Conduire un entretien utilisateur",
+    description: "Préparer, conduire et synthétiser un entretien.",
+    sourceUrl: "https://francetravail.io",
+  },
+  {
+    id: "ev-1",
+    kind: "portfolio",
+    text: "Planifié 12 entretiens, rédigé le guide et produit la synthèse utilisée par l'équipe produit.",
+    observedAt: "2026-06-01",
+  },
+  p,
+);
+assert.equal(resultat.coverage, "demonstrated");
+console.log(JSON.stringify(resultat, null, 2));
