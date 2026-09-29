@@ -1,4 +1,4 @@
-// Purpose: Implement the package-specific, reviewable decision boundary.
+// Objectif : implémenter la frontière de décision métier propre au dépôt.
 export const COVERAGE=["demonstrated","partially_demonstrated","adjacent","no_evidence"];
 export function romeSkill(input){if(!input?.code||!input?.label||!input?.description)throw new TypeError("Skill needs code, label and description");return{code:String(input.code),label:String(input.label),description:String(input.description),sourceUrl:String(input.sourceUrl||"")};}
 export function evidence(input){if(!input?.id||!input?.text||!input?.kind||!input?.observedAt)throw new TypeError("Evidence needs id, text, kind and observedAt");const d=new Date(input.observedAt);if(Number.isNaN(d.valueOf()))throw new TypeError("observedAt must be ISO");return{id:String(input.id),text:String(input.text),kind:String(input.kind),observedAt:d.toISOString(),sourceUrl:String(input.sourceUrl||"")};}

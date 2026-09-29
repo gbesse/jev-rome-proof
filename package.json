@@ -1,7 +1,7 @@
 {
   "name": "@gbesse/jev-rome-proof",
-  "version": "0.1.0",
-  "description": "Map concrete candidate or training evidence to France Travail ROME 4.0 skills with reviewable coverage labels.",
+  "version": "0.1.1",
+  "description": "Relie des preuves concrètes de candidature ou de formation aux compétences ROME 4.0 de France Travail.",
   "type": "module",
   "license": "MIT",
   "engines": {
