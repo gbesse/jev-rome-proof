@@ -2,7 +2,7 @@
 
 **Relie des preuves concrètes de candidature ou de formation aux compétences ROME 4.0 de France Travail.**
 
-[![Tests](https://github.com/gbesse/jev-rome-proof/actions/workflows/test.yml/badge.svg)](https://github.com/gbesse/jev-rome-proof/actions/workflows/test.yml) [MIT](LICENSE) · Node.js 22+ · v0.1.2 · Documentation française
+[![Tests](https://github.com/gbesse/jev-rome-proof/actions/workflows/test.yml/badge.svg)](https://github.com/gbesse/jev-rome-proof/actions/workflows/test.yml) [MIT](LICENSE) · Node.js 22+ · v0.1.3 · Documentation française
 
 Le moteur construit une matrice entre compétences ROME et éléments de preuve. Jev indique si chaque élément démontre la compétence, n’en couvre qu’une partie, reste adjacent ou n’apporte aucune preuve.
 
@@ -67,10 +67,20 @@ console.log(JSON.stringify(resultat, null, 2));
 Lancez-le avec :
 
 ```sh
-npm run demo
+npm run demo:principal
 ```
 
 Résultat à repérer : `coverage: demonstrated`.
+
+### Cas limite à tester
+
+Une forte couverture de preuve ne produit toujours aucune décision d’embauche. Le code se trouve dans [`examples/cas-limite.mjs`](examples/cas-limite.mjs).
+
+```sh
+npm run demo:limite
+```
+
+Résultat à repérer : `coverage: demonstrated · hiringDecision: false`. La commande `npm run demo` exécute les deux exemples.
 
 ## Utilisation de la bibliothèque
 
